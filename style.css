@@ -1,0 +1,65 @@
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+body {
+    background: #333;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+div:after {
+    content: "";
+    clear: both;
+}
+section {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+}
+span {
+    float: left;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+span:before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+    background-color: #bbb;
+    border-radius: 50px;
+}
+
+.clear {
+    clear: both;
+}
+
+.red:before {
+    background-color: #333;
+}
+.green:before {
+    background-color: #444;
+}
+.yellow:before {
+    background-color: #555;
+}
+.blue:before {
+    background-color: #666;
+}
+.lilac:before {
+    background-color: #777;
+}
+.pink:before {
+    background-color: #888;
+}
+.brown:before {
+    background-color: #999;
+}
