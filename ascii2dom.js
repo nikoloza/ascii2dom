@@ -210,9 +210,6 @@ Array.prototype.forEach.call(ascii, function(value, i) {
         var span = document.createElement("span");
 
         var spanClass;
-
-        if (i == 0) console.log(value);
-
         switch (value) {
             case '.':
                 spanClass = 'blue';
@@ -248,8 +245,6 @@ Array.prototype.forEach.call(ascii, function(value, i) {
 
     var clear = document.createElement("div");
     clear.className += 'clear';
-
-    div.appendChild(clear);
 
     var section = document.getElementsByTagName('section')[0];
     section.appendChild(div);
