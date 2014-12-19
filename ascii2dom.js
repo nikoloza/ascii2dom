@@ -1,4 +1,4 @@
-var symbols = [
+var ascii = [
     ".............................................................................................................`.........................................................................`................",
     "`....................................................................................................`......:....................................................`................`....,................",
     "...........................................................................................................`,...........................................................................................",
@@ -201,51 +201,57 @@ var symbols = [
     ".................`..........,,,::...++++++++++++++++++++'''''''''+++++++'''+'';;;;;;;:;''+''''+'+++++++';;;'''''++++++++++++++++++++++++''''++++++++++++++++...............::,,,,,......................"
 ];
 
-$.each(symbols, function(key, value) {
-    var val = value.split('');
 
-    var div = $('<div></div>')
+Array.prototype.forEach.call(ascii, function(value, i) {
+    var line = value.split(''),
+        div = document.createElement("div");
 
-    $.each(val, function(key, value) {
-        var span = $('<span></span>');
+    Array.prototype.forEach.call(line, function(value, i) {
+        var span = document.createElement("span");
 
-        var spanclass;
+        var spanClass;
+
+        if (i == 0) console.log(value);
 
         switch (value) {
             case '.':
-                spanclass = 'blue';
+                spanClass = 'blue';
                 break;
             case '+':
-                spanclass = 'red';
+                spanClass = 'red';
                 break;
             case ';':
-                spanclass = 'green';
+                spanClass = 'green';
                 break;
             case '`':
-                spanclass = 'yellow';
+                spanClass = 'yellow';
                 break;
             case '#':
-                spanclass = 'lilac';
+                spanClass = 'lilac';
                 break;
             case '@':
-                spanclass = 'pink';
+                spanClass = 'pink';
                 break;
             case ':':
-                spanclass = 'pink';
+                spanClass = 'pink';
                 break;
         }
 
-        // span.addClass(spanclass);
-        span.addClass(spanclass).css('width', 100 / val.length + '%').css('height', 100 / symbols.length + '%');
+        if (span.classList) span.classList.add(spanClass);
+        else span.className += ' ' + spanClass;
 
-        div.append(span);
+        div.style.height = 100 / ascii.length + '%';
+        span.style.width = 100 / line.length + '%';
+
+        div.appendChild(span);
     });
 
-    div.append('<div class="clear"/>');
+    var clear = document.createElement("div");
+    clear.className += 'clear';
 
-    $('section').append(div);
+    div.appendChild(clear);
+
+    var section = document.getElementsByTagName('section')[0];
+    section.appendChild(div);
+
 });
-
-$(document).on('hover', 'span', function() {
-    $(this).hide().fadeIn();
-})
