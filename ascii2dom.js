@@ -1,13 +1,12 @@
-function ascii(file) {
+var ascii2dom = (function (file) {
+    var ascii,
+        asciiFile = new XMLHttpRequest();
 
-    var ascii;
-
-    var asciiFile = new XMLHttpRequest();
     asciiFile.open("GET", file, false);
 
-    asciiFile.onreadystatechange = function() {
+    asciiFile.onreadystatechange = function () {
         if (asciiFile.readyState === 4) {
-            if (asciiFile.status === 200 || asciiFile.status == 0) {
+            if (asciiFile.status === 200 || asciiFile.status === 0) {
                 ascii = asciiFile.responseText;
             }
         }
@@ -15,16 +14,21 @@ function ascii(file) {
 
     asciiFile.send(null);
 
-    var ascii = ascii.split('\n');
+    ascii = ascii.split('\n');
 
-    Array.prototype.forEach.call(ascii, function(value, i) {
-        var line = value.split(''),
-            div = document.createElement("div");
+    var section = document.getElementsByTagName('section')[0];
+    section.write  = '';
 
-        Array.prototype.forEach.call(line, function(value, i) {
-            var span = document.createElement("span");
+    var line;
+    Array.prototype.forEach.call(ascii, function (value, i) {
+        line = value.split('');
 
-            var spanClass;
+        var div = document.createElement("div");
+
+        Array.prototype.forEach.call(line, function (value, i) {
+            var span = document.createElement("span"),
+                spanClass;
+
             switch (value) {
                 case '.':
                     spanClass = 'blue';
@@ -56,16 +60,16 @@ function ascii(file) {
             span.style.width = 100 / line.length + '%';
 
             div.appendChild(span);
+
         });
 
         var clear = document.createElement("div");
         clear.className += 'clear';
 
-        var section = document.getElementsByTagName('section')[0];
         section.appendChild(div);
 
     });
 
-};
+    console.log(ascii.length + ' rows and ' + line.length + ' columns have been created');
 
-ascii('ascii');
+})('ascii');
