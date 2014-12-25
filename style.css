@@ -3,17 +3,17 @@ body {
     position: relative;
     height: 100%;
     overflow: hidden;
-}
-body {
     background: #333;
     text-align: center;
     padding: 0;
     margin: 0;
 }
+
 div:after {
     content: "";
     clear: both;
 }
+
 section {
     position: relative;
     display: inline-block;
@@ -21,6 +21,7 @@ section {
     height: 100%;
     white-space: nowrap;
 }
+
 span {
     float: left;
     display: block;
@@ -28,7 +29,6 @@ span {
     overflow: hidden;
     height: 100%;
 }
-
 span:before {
     content: "";
     position: absolute;
