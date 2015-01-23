@@ -1,8 +1,8 @@
-var ascii2dom = (function (file) {
+(function (file) {
     var ascii,
         asciiFile = new XMLHttpRequest();
 
-    asciiFile.open("GET", file, false);
+    asciiFile.open('GET', file, false);
 
     asciiFile.onreadystatechange = function () {
         if (asciiFile.readyState === 4) {
@@ -10,7 +10,7 @@ var ascii2dom = (function (file) {
                 ascii = asciiFile.responseText;
             }
         }
-    }
+    };
 
     asciiFile.send(null);
 
@@ -20,13 +20,13 @@ var ascii2dom = (function (file) {
     section.write  = '';
 
     var line;
-    Array.prototype.forEach.call(ascii, function (value, i) {
+    Array.prototype.forEach.call(ascii, function (value) {
         line = value.split('');
 
-        var div = document.createElement("div");
+        var div = document.createElement('div');
 
-        Array.prototype.forEach.call(line, function (value, i) {
-            var span = document.createElement("span"),
+        Array.prototype.forEach.call(line, function (value) {
+            var span = document.createElement('span'),
                 spanClass;
 
             switch (value) {
@@ -63,7 +63,7 @@ var ascii2dom = (function (file) {
 
         });
 
-        var clear = document.createElement("div");
+        var clear = document.createElement('div');
         clear.className += 'clear';
 
         section.appendChild(div);
