@@ -56,9 +56,6 @@
             if (span.classList) span.classList.add(spanClass);
             else span.className += ' ' + spanClass;
 
-            div.style.height = 100 / ascii.length + '%';
-            span.style.width = 100 / line.length + '%';
-
             div.appendChild(span);
 
         });
